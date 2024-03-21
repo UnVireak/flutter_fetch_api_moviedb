@@ -8,7 +8,13 @@ class MovieApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MovieScreen()
+      home: MovieScreen(),
+      theme: ThemeData( 
+        brightness: Brightness.dark,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.grey[900]
+        )
+      ),
     );
   }
 }

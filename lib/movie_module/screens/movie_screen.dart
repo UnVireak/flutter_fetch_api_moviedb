@@ -15,7 +15,7 @@ class _MovieScreenState extends State<MovieScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        // backgroundColor: Colors.blueAccent,
         title: Text(
           "Super Movies",
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -69,13 +69,7 @@ class _MovieScreenState extends State<MovieScreen> {
             context,
             MaterialPageRoute(
               builder: (context) => DetailScreen(
-                title: item.title.toString(),
-                imageUrl: "https://image.tmdb.org/t/p/w500/${item.posterPath}",
-                banner: "https://image.tmdb.org/t/p/w500/${item.backdropPath}",
-                originalLanguage: item.originalLanguage,
-                overview: item.overview.toString(),
-                mediaType: item.mediaType,
-                releaseDate: item.releaseDate.toString(),
+            item
               ),
             ),
           );
@@ -92,7 +86,7 @@ class _MovieScreenState extends State<MovieScreen> {
                   width: 100,
                   height: 100,
                   child: Image.network(
-                    "https://image.tmdb.org/t/p/w500/${item.posterPath}",
+                  "${item.posterPath}",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -103,7 +97,7 @@ class _MovieScreenState extends State<MovieScreen> {
                   // padding: EdgeInsets.all(8.0),
                   child: Center(
                     child: Text(
-                      "${item.title}",
+                      "${item.titleOrName}",
                       maxLines: 2, // Limit to 2 lines
                       overflow: TextOverflow
                           .ellipsis, // Add ellipsis if exceeds 2 lines

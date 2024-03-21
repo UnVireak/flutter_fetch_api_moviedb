@@ -3,6 +3,7 @@
 //     final movieModel = movieModelFromMap(jsonString);
 
 import 'dart:convert';
+import 'dart:math';
 
 MovieModel movieModelFromMap(String str) =>
     MovieModel.fromMap(json.decode(str));
@@ -85,16 +86,31 @@ class Result {
     this.firstAirDate,
     this.originCountry,
   });
+  String get titleOrName {
+    if (title == null) {
+      return name ?? "no name";
+    } else {
+      return title ?? "no title";
+    }
+  }
+
+  String get dateOnly {
+    if (releaseDate == null)
+      return "";
+    return
+      "${releaseDate!.day}/${releaseDate!.month}/${releaseDate!.year}";
+  }
 
   factory Result.fromMap(Map<String, dynamic> json) => Result(
         adult: json["adult"],
-        backdropPath: json["backdrop_path"],
+        backdropPath:
+            "https://image.tmdb.org/t/p/w500/" + json["backdrop_path"],
         id: json["id"],
         title: json["title"],
         originalLanguage: json["original_language"],
         originalTitle: json["original_title"],
         overview: json["overview"],
-        posterPath: json["poster_path"],
+        posterPath: "https://image.tmdb.org/t/p/w500/" + json["poster_path"],
         mediaType: json["media_type"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         popularity: json["popularity"]?.toDouble(),
