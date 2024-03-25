@@ -3,6 +3,7 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 // class DetailScreen extends StatelessWidget {
 //   Result item;
@@ -219,6 +220,24 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
           ),
           Container(
+          
+            child: Center(
+              child: RatingBar(
+                allowHalfRating: true,
+                initialRating: widget.item.voteAverage / 2,
+                itemCount: 5,
+                ratingWidget: RatingWidget(
+                  full: Icon(Icons.star, color: Colors.yellow,),
+                  half: Icon(Icons.star_half, color: Colors.orange,),
+                  empty: Icon(Icons.star_border, color: Colors.white,),
+                ),
+                onRatingUpdate: (double value) {},
+              ),
+            ),
+          ),
+
+       
+          Container(
             // margin: EdgeInsets.only(left: 10),
             child: Text(
               "${widget.item.overview},",
@@ -235,4 +254,3 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
   }
-
